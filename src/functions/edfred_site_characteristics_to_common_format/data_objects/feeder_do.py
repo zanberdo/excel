@@ -12,8 +12,11 @@ class FeederDO:
         self.contract_project_code = contract_project_code
 
     def __repr__(self) -> str:
-        results = "FeederDO{\n"
+        results = '{\n\t"FeederDO" : {\n'
         for attr, value in self.__dict__.items():
-            results += f"\t{attr}='{value}',\n"
-        results += "}"
+            if type(value) is int:
+                results += f'\t\t"{attr}": {value},\n'
+            else:
+                results += f'\t\t"{attr}": "{value}",\n'
+        results = results[:-2] + "\n\t}" + "\n}"
         return results

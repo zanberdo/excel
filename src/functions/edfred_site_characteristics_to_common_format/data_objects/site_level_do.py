@@ -14,8 +14,11 @@ class SiteLevelDO:
         self.doc = cod
 
     def __repr__(self) -> str:
-        results = "SiteLevelDO{\n"
+        results = '{\n\t"SiteLevelDO" : {\n'
         for attr, value in self.__dict__.items():
-            results += f"\t{attr}='{value}',\n"
-        results += "}"
+            if type(value) is int:
+                results += f'\t\t"{attr}": {value},\n'
+            else:
+                results += f'\t\t"{attr}": "{value}",\n'
+        results = results[:-2] + "\n\t}" + "\n}"
         return results
