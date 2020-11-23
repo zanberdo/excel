@@ -11,7 +11,7 @@ class SiteLevelDO:
         self.capacity_limit_wac = capacity_limit_wac
         self.total_capacity_wdc = total_capacity_wdc
         self.number_of_feeders = number_of_feeders
-        self.doc = cod
+        self.cod = cod
 
     def __repr__(self) -> str:
         results = '{\n\t"SiteLevelDO" : {\n'
@@ -20,5 +20,4 @@ class SiteLevelDO:
                 results += f'\t\t"{attr}": {value},\n'
             else:
                 results += f'\t\t"{attr}": "{value}",\n'
-        results = results[:-2] + "\n\t}" + "\n}"
-        return results
+        return results[:-2] + "\n\t}" + "\n}"

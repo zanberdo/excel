@@ -1,6 +1,7 @@
 import os
 import errno
 import pandas as pd
+from openpyxl.utils.dataframe import dataframe_to_rows
 
 
 class Main:
@@ -32,15 +33,17 @@ class Main:
         # for item in site_level_df.iteritems():
         #     print('========================================')
         #     print(f'item: [{item}]')
-        for row in site_level_df.iterrows():
-            print('=========== iterrows() ===================')
-            print(f'row type: [{type(row)}]')
-            print(f'row size: [{len(row)}]')
-            print(f'row[0]:   [{row[0]}]')
-            print('---------------------------------')
-            print(f'row[1]:   [{row[1].to_string()}]')
-            print('---------------------------------')
-            print(f'row[1]:   [{row[1]}]')
+        for row in dataframe_to_rows(site_level_df, index=False, header=False):
+            print(row[2])
+        # for row in site_level_df.iterrows():
+        #     print('=========== iterrows() ===================')
+        #     print(f'row type: [{type(row)}]')
+        #     print(f'row size: [{len(row)}]')
+        #     print(f'row[0]:   [{row[0]}]')
+        #     print('---------------------------------')
+        #     print(f'row[1]:   [{row[1].to_string()}]')
+        #     print('---------------------------------')
+        #     print(f'row[1]:   [{row[1]}]')
 
     def get_dataframe(self, row_start, row_end, col_start, col_end):
         # dataframe = self.dataframe.loc[row_start:row_end][list(self.dataframe.columns[col_start:col_end])]

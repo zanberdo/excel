@@ -18,5 +18,4 @@ class FeederDO:
                 results += f'\t\t"{attr}": {value},\n'
             else:
                 results += f'\t\t"{attr}": "{value}",\n'
-        results = results[:-2] + "\n\t}" + "\n}"
-        return results
+        return results[:-2] + "\n\t}" + "\n}"
