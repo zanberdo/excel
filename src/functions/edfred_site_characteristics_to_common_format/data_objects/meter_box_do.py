@@ -1,21 +1,17 @@
-class ShelterDO:
+class MeterBoxDO:
 
     def __init__(self,
                  name,
                  iec_name,
-                 capacity_wac,
-                 capacity_wdc,
-                 number_of_inverters_per_shelter,
-                 parent_feeder):
+                 deeper_level_asset_ref,
+                 meterkind):
         self.name = name
         self.iec_name = iec_name
-        self.capacity_wac = capacity_wdc
-        self.capacity_wdc = capacity_wac
-        self.number_of_inverters_per_shelter = number_of_inverters_per_shelter
-        self.parent_feeder = parent_feeder
+        self.deeper_level_asset_ref = deeper_level_asset_ref
+        self.meterkind = meterkind
 
     def __repr__(self) -> str:
-        results = '{\n\t"ShelterDO" : {\n'
+        results = '{\n\t"MeterBoxDO" : {\n'
         for attr, value in self.__dict__.items():
             if type(value) is int:
                 results += f'\t\t"{attr}": {value},\n'

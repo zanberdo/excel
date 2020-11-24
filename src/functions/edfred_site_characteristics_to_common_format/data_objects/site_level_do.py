@@ -1,9 +1,18 @@
 class SiteLevelDO:
 
-    def __init__(self, project_code, iec_bay_name, latitude, longitude, module_tilt, module_orientation,
-                 capacity_limit_wac, total_capacity_wdc, number_of_feeders, cod):
+    def __init__(self,
+                 project_code,
+                 iec_name,
+                 latitude,
+                 longitude,
+                 module_tilt,
+                 module_orientation,
+                 capacity_limit_wac,
+                 total_capacity_wdc,
+                 number_of_feeders,
+                 cod):
         self.project_code = project_code
-        self.iec_bay_name = iec_bay_name
+        self.iec_name = iec_name
         self.latitude = latitude
         self.longitude = longitude
         self.module_tilt = module_tilt

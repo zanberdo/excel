@@ -1,8 +1,13 @@
 class FeederDO:
 
-    def __init__(self, name, iec_name, capacity_wac, capacity_wdc,
+    def __init__(self,
+                 name,
+                 iec_name,
+                 capacity_wac,
+                 capacity_wdc,
                  number_of_shelters_inverters,
-                 cod, contract_project_code):
+                 cod,
+                 contract_project_code):
         self.name = name
         self.iec_name = iec_name
         self.feeder_capacity_wac = capacity_wac

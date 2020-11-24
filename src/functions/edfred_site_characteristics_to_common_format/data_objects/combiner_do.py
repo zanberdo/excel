@@ -8,8 +8,7 @@ class CombinerDO:
                  temperature_coefficient,
                  contract_degradation_rate,
                  manufacturer_degradation_rate,
-                 measured_degradation_rate
-                 ):
+                 measured_degradation_rate):
         self.name = name
         self.iec_combiner_name = iec_combiner_name
         self.capacity_wcd = capacity_wcd
