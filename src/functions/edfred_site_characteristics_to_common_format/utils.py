@@ -3,7 +3,7 @@ import re
 
 class Utils:
     def parse_dms(self, dms):
-        parts = re.split('[^-?\d\w\.]+', dms)
+        parts = re.split('[^-?\d\w\.]', dms)
         return self._dms2dd(parts[0], parts[1], parts[2], parts[3])
 
     def _dms2dd(self, degrees, minutes, seconds, direction):

@@ -86,6 +86,12 @@ class UtilsUnitTests(unittest.TestCase):
         expected = -23.753427777777777
         self.assertEqual(expected, actual, "Failed to parse south latitude")
 
+    def test_parse_dms_no_spaces(self):
+        latitude = "23°45'12.34\"S'"
+        actual = self.utils.parse_dms(latitude)
+        expected = -23.753427777777777
+        self.assertEqual(expected, actual, "Failed to parse south latitude")
+
     def test_striplist(self):
         test_list = ['Trailing ', ' Leading', ' Padded ', 'No Padding']
         actual = self.utils.striplist(test_list)
