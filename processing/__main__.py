@@ -1,10 +1,8 @@
 import logging
 import os
-import pathlib
 
 import pandas as pd
-
-# import s3fs
+import s3fs
 
 MSG_FORMAT = '%(asctime)s - %(levelname)s - %(module)s - %(message)s'
 
@@ -35,21 +33,20 @@ def handler(event, context):
     if data_column_offset is None:
         logger.error('Failed to provide "dataColumnOffset" from environment variable. Using default value: 3')
         data_column_offset = DEFAULT_DATA_COLUMN_OFFSET
-    # s3_global_checklist = f'{os.environ["S3_BUCKET_INPUTS"]}/' \
-    #                       f'{project_code}/' \
-    #                       f'{S3_GLOBAL_CHECKLIST_FILE}_{project_code}.xlsx'
-    s3_global_checklist = f'../{S3_GLOBAL_CHECKLIST_FILE}_{project_code}.xlsx'
+    s3_global_checklist = f'{os.environ["S3_BUCKET_INPUTS"]}/' \
+                          f'{project_code}/' \
+                          f'{S3_GLOBAL_CHECKLIST_FILE}_{project_code}.xlsx'
     site_characteristic = "Site characteristic"
     tag_list_requirements = "Tag list requirements"
 
     # TODO: clean this up! Is missing columns or other validation
-    fs = pathlib.Path(s3_global_checklist)
-    if not fs.exists():
+    fs = s3fs.S3FileSystem()
+    if not fs.exists(s3_global_checklist):
         logger.error(f'File does not exist: {s3_global_checklist}')
         raise FileExistsError(f'Failed to open {s3_global_checklist}')
 
     logger.info(f'Reading {s3_global_checklist}...')
-    with fs.open() as file:
+    with fs.open(path=s3_global_checklist, mode="rb") as file:
         global_checklist_file = file.read()
 
     workbook = pd.ExcelFile(global_checklist_file)
